@@ -1,0 +1,48 @@
+#   --Unit Tests--
+# Тесты для функции sort_words:
+# Проверьте корректность сортировки для обычного предложения.
+# Убедитесь, что функция правильно обрабатывает предложения с различными символами, включая знаки препинания и числа.
+# Тестирование функции на пустую строку или строку, состоящую только из пробелов, чтобы проверить, как функция справляется с необычными входными данными.
+import unittest
+from zadanie_2 import sort_words
+
+class TestSortWords(unittest.TestCase):
+    #OK
+    def test_normal_sentence(self):
+        sentence = "This is a test sentence"
+        expected = ['a', 'is', 'sentence', 'test', 'This']
+        result = sort_words(sentence)
+        self.assertEqual(result, expected)
+    
+    #OK проверочное предложение со знаками препинания
+    def test_sentence_with_punctuation(self):
+        sentence = "Hello, world! This is a test."
+        expected = ['a', 'Hello,', 'is', 'test.', 'This', 'world!']
+        result = sort_words(sentence)
+        self.assertEqual(result, expected)
+
+    #OK тестовое предложение с цифрами
+    def test_sentence_with_numbers(self):
+        sentence = "This is a test sentence with 2 numbers 1 and 3"
+        expected = ['1', '2', '3', 'a', 'and', 'is', 'numbers', 'sentence', 'test', 'This', 'with']
+        result = sort_words(sentence)
+        self.assertEqual(result, expected)
+
+    #OK проверить пустую строку
+    def test_empty_string(self):
+        sentence = ""
+        expected = []
+        result = sort_words(sentence)
+        self.assertEqual(result, expected)
+
+    #OK тестовая строка с пробелами
+    def test_string_with_spaces(self):
+        sentence = "     "
+        expected = []
+        result = sort_words(sentence)
+        self.assertEqual(result, expected)
+
+    
+
+if __name__ == "__main__":
+    unittest.main()

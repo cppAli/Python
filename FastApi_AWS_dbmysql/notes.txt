@@ -1,0 +1,33 @@
+pip install mysql-connector-python
+
+import mysql.connector
+
+admin
+Romanko1488
+
+db-fastapi-aws
+db_demo : name
+
+
+
+from getpass import getpass
+from mysql.connector import connect, Error
+try:
+    with connect(
+        host="localhost",
+        user=input("Введите имя пользователя: "),
+        password=getpass("Введите пароль: "),
+    ) as connection:
+        print(f"""
+Подключение установлено:
+хост: {connection.server_host}
+порт: {connection.server_port}
+пользователь: {connection.user}""")
+except Error as e:
+    print(f"Ошибка подключения к серверу:\n{e}")
+
+https://colab.research.google.com/drive/1rRtFe4OK-bIrc-DJfH2tkN_GkI4mLOgZ?usp=sharing
+
+1. создать FASt API приложение и подключить к базе данных
+2. в azure создать виртуальную машину
+3. в azure создать приложение Web ap
